@@ -4,8 +4,8 @@ import os
 from PIL import Image
 
 cascPath = "haarcascade_frontalface_default.xml"
-folder = sys.argv[1]
-path = sys.argv[2]
+source = sys.argv[1]
+destination = sys.argv[2]
 
 
 #Finds faces in an image
@@ -40,18 +40,19 @@ def crop_greyscale_resize_and_save (faces_and_original):
         bottom = (y + h)
         cropped_example = faces_and_original[1].crop((left, top, right, bottom))
         cropped_example = cropped_example.convert('L')
-        cropped_example = cropped_example.resize((256,256))
-        final_path = path + '/' + str(faces_and_original[3]) + '+' + str(j) +".jpg"
+        cropped_example = cropped_example.resize((48,48))
+        final_path = destination + '/' + str(faces_and_original[3]) + '+' + str(j) + "4" + ".jpg"
         print (final_path)
         cropped_example.save (final_path)
         j += 1
 
-#Loops through a folder of images
+#Loops through a source of images
 def loop_through_folder():
     iteration = 0
     suffix = "jpg"
-    for fn in os.listdir(folder):
+    for fn in os.listdir(source):
         if fn.endswith(suffix):
             iteration += 1
-            crop_greyscale_resize_and_save(find_faces(folder+'/'+fn, iteration))
+            crop_greyscale_resize_and_save(find_faces(source+'/'+fn, iteration))
+
 loop_through_folder()
