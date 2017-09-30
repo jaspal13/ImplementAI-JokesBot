@@ -41,7 +41,7 @@ def crop_greyscale_resize_and_save (faces_and_original):
         cropped_example = faces_and_original[1].crop((left, top, right, bottom))
         cropped_example = cropped_example.convert('L')
         cropped_example = cropped_example.resize((48,48))
-        final_path = destination + '/' + str(faces_and_original[3]) + '+' + str(j) + "4" + ".jpg"
+        final_path = destination + '/' + str(faces_and_original[3]) + '+' + str(j) + ".jpg"
         print (final_path)
         cropped_example.save (final_path)
         j += 1
