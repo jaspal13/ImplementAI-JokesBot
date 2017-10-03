@@ -40,6 +40,5 @@ def mainFunction(url):
 	return cropped_example
     
 x=mainFunction("http://img.src.ca/2016/01/08/635x357/160108_no0lk_rci-m-face-1_sn635.jpg")
-#import pickle
-#pickle.dump(x,open("multipleFaces.p","wb"))
+
 print type(x)
